@@ -1,0 +1,31 @@
+<main class="principal">
+  <div class="card">
+    <h2 class="center">Alterar Cadastro de Autor</h2>
+    <div>{{autorId}}</div>
+    <div>
+      <form [formGroup]="alteraAutorForm">
+        <div class="label-input">
+          <label for="nome">Nome:</label>
+          <input type="text" name="nome" placeholder="digite aqui o nome do autor" formControlName="nome">
+        </div>
+        <div class="label-input">
+          <label for="biografia">Biografia:</label><br>
+          <textarea name="biografia" placeholder="digite aqui a biografia do Autor" cols="50" rows="10"
+          formControlName="biografia"
+          ></textarea>
+        </div>
+        <div>
+          <input type="button" value="Enviar" (click)="alterarAutor()">
+        </div>
+      </form>
+    </div>
+  </div>
+    <!-- Mensagem ao cadastrar-->
+    <div class="success" *ngIf="successAlteraAutor != ''">
+      {{successAlteraAutor}}
+    </div>
+    <!-- Mensagem de erro ao cadastrar-->
+    <div class="error" *ngIf="erroAlteraAutor != ''">
+      {{erroAlteraAutor}}
+    </div>
+</main>

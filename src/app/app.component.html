@@ -1,0 +1,18 @@
+
+<header class="center">
+  <div>
+  <h1>Biblioteca Acelera</h1>
+  <input class="bt" type="button" value="Livros" routerLink="livros">
+  <input class="bt" type="button" value="Autores" routerLink="autores">
+  <div>{{autorId}}</div>
+</div>
+</header>
+
+<main>
+  <router-outlet></router-outlet>
+  <!-- <app-listar-autores (aoAlterar)="alterarAutor($event)"></app-listar-autores> -->
+  <!-- <app-alterar-autor [autorId]="autorId"></app-alterar-autor> -->
+
+  <!-- <app-listar-autores></app-listar-autores> -->
+  <!-- <app-alterar-autor></app-alterar-autor> -->
+</main>

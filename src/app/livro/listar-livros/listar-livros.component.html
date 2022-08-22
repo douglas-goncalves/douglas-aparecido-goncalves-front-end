@@ -1,0 +1,38 @@
+<main class="principal">
+  <div class="card">
+    <h1>Lista De Livros</h1>
+    <div>
+      <input class="bt" type="button" value="Cadastrar novo livro" [routerLink]="['../formulario-livro']">
+    </div>
+    <div *ngIf="livros.length > 0 && erroListaLivro==''">
+      <table>
+        <tr>
+          <th>Id</th>
+          <th>Nome</th>
+          <th>Ações</th>
+        </tr>
+        <tr *ngFor="let livro of livros">
+          <td>{{livro.id}}</td>
+          <td>{{livro.titulo}}</td>
+          <td><button class="bt-list bt" (click)="altera(livro)">Alterar</button></td>
+          <td><button class="bt-list bt" (click)="removePeloId(livro)">Remover</button></td>
+          <td><button class="bt-list bt" (click)="buscaPorId(livro.id)">Vizualizar</button></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <!-- Mensagem ao Listar Livro -->
+  <div *ngIf="livros.length <= 0 && erroListaLivro==''">
+    Não Tem Livros
+  </div>
+
+  <!-- Mensagem ao remover Livro -->
+  <!-- Caso a mensagem de erro esta visivel ao clickar em cancelar ela deve sumir-->
+  <div class="error" *ngIf="erroRemoveLivro != ''">
+    {{erroRemoveLivro}}
+  </div>
+
+  <div class="success" *ngIf="successoRemoveLivro != ''">
+    {{successoRemoveLivro}}
+  </div>
+</main>

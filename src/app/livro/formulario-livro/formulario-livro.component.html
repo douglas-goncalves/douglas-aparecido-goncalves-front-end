@@ -1,0 +1,41 @@
+<main class="principal">
+  <div class="card">
+    <h2 class="center">Formulario de Cadastro de Autor</h2>
+    <div>
+        <form [formGroup]="cadastroLivroForm">
+          <div class="label-input">
+            <label for="titulo">titulo:</label>
+            <input type="text" name="titulo" placeholder="digite aqui o titulo do livro" formControlName="titulo">
+          </div>
+          <div class="label-input">
+            <label for="anoLancamento">Ano de lançamento:</label>
+            <input type="text" name="anoLancamento" placeholder="ano de lançamento do livro"
+              formControlName="anoLancamento">
+          </div>
+          <div *ngIf="autores.length > 0">
+              <table>
+                <tr>
+                  <th>Autores</th>
+                  <th>escolha</th>
+                </tr>
+                <tr *ngFor="let autor of autores">
+                  <td>{{autor.nome}}</td>
+                  <input type="checkbox" value={{autor.id}} (change)="onChange($event.target)" />
+                </tr>
+                <div>
+                  <input type="button" value="Enviar" (click)="criarLivro()">
+                </div>
+              </table>
+          </div>
+        </form>
+    </div>
+  </div>
+  <!-- Mensagem ao cadastrar-->
+  <div class="success" *ngIf="successCriaLivro != ''">
+    {{successCriaLivro}}
+  </div>
+  <!-- Mensagem de erro ao cadastrar-->
+  <div class="error" *ngIf="erroCriaLivro != ''">
+    {{erroCriaLivro}}
+  </div>
+</main>

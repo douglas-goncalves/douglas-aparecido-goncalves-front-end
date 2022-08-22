@@ -1,0 +1,39 @@
+<main class="principal">
+  <div class="card">
+    <h2 class="center">Lista De Autores</h2>
+    <div>{{autorId}}</div>
+    <div>
+      <input class="bt" type="button" value="Cadastrar novo Autor" [routerLink]="['../formulario-autor']">
+    </div>
+    <div *ngIf="autores.length > 0 && erroListaAutor==''">
+      <table>
+        <tr>
+          <th>Id</th>
+          <th>Nome</th>
+          <th>Ações</th>
+        </tr>
+        <tr *ngFor="let autor of autores">
+          <td>{{autor.id}}</td>
+          <td>{{autor.nome}}</td>
+          <td><button class="bt-list bt" (click)="altera(autor)">Alterar</button></td>
+          <td><button class="bt-list bt" (click)="buscaPorId(autor.id)">vizualizar</button></td>
+          <td><button class="bt-list bt" (click)="listarLivrosAutor(autor.id)">Livros</button></td>
+        </tr>
+      </table>
+    </div>
+    <!-- Mensagem ao Listar autor -->
+    <div *ngIf="autores.length <= 0 && erroListaAutor==''">
+      Não tem autores
+    </div>
+
+    <!-- Mensagem ao remover autor -->
+    <!-- Caso a mensagem de erro esta visivel ao clickar em cancelar ela deve sumir-->
+    <div class="success" *ngIf="erroRemoveAutor != ''">
+      {{erroRemoveAutor}}
+    </div>
+
+    <div class="error" *ngIf="successRemoveAutor != ''">
+      {{successRemoveAutor}}
+    </div>
+  </div>
+</main>
